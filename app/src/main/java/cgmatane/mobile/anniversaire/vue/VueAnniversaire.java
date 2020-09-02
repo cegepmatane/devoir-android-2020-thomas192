@@ -60,12 +60,12 @@ public class VueAnniversaire extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View vue,
                                             int positionDansAdapter, long positionItem) {
 
-                        ListView vueListeLivres = (ListView)vue.getParent();
+                        ListView vueListeAnniversaire = (ListView)vue.getParent();
 
                         @SuppressWarnings("unchecked")
-                        HashMap<String,String> livre =
+                        HashMap<String,String> anniversaire =
                                 (HashMap<String,String>)
-                                        vueListeLivres.getItemAtPosition((int)positionItem);
+                                        vueListeAnniversaire.getItemAtPosition((int)positionItem);
 
                         startActivity(intentionNaviguerModifierAnniversaire);
                     }
