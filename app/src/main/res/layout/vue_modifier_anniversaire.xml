@@ -83,7 +83,7 @@
         android:layout_marginStart="74dp"
         android:layout_marginLeft="74dp"
         android:layout_marginBottom="4dp"
-        android:text="Ajouter"
+        android:text="Modifier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
