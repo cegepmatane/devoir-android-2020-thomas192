@@ -2,6 +2,7 @@ package cgmatane.mobile.anniversaire.vue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class VueAnniversaire extends AppCompatActivity {
 
     protected ListView vueListeAnniversaire;
     protected List<HashMap<String, String>> listeAnniversaire;
+    protected Intent intentionNaviguerAjouterAnniversaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,12 @@ public class VueAnniversaire extends AppCompatActivity {
 
         Button vueActionAjouterAnniversaire = (Button)findViewById(R.id.vueActionAjouterAnniversaire);
 
+        intentionNaviguerAjouterAnniversaire = new Intent(this, VueAjouterAnniversaire.class);
+
         vueActionAjouterAnniversaire.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View arg0) {
-
+                        startActivity(intentionNaviguerAjouterAnniversaire);
                     }
                 }
         );
