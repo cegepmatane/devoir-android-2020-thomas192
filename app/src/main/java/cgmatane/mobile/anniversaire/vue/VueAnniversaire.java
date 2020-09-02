@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,16 +14,25 @@ import cgmatane.mobile.anniversaire.R;
 
 public class VueAnniversaire extends AppCompatActivity {
 
-    protected ListView VueListeAnniversaire;
+    protected ListView vueListeAnniversaire;
     protected List<HashMap<String, String>> listeAnniversaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_anniversaire);
-        VueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
+        vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
 
         listeAnniversaire = prepareListeAnniversaire();
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                listeAnniversaire,
+                android.R.layout.two_line_list_item,
+                new String[] {"nom", "date"},
+                new int[] {android.R.id.text1, android.R.id.text2});
+
+        vueListeAnniversaire.setAdapter(adapter);
     }
 
     private List<HashMap<String, String>> prepareListeAnniversaire() {
@@ -32,7 +42,7 @@ public class VueAnniversaire extends AppCompatActivity {
 
         anniversaire = new HashMap<String, String>();
         anniversaire.put("nom", "Thomas Saudemont");
-        anniversaire.put("date", "22/02/2001");
+        anniversaire.put("date", "22-02-2001");
         listeAnniversaire.add(anniversaire);
 
         return listeAnniversaire;
