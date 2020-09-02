@@ -7,6 +7,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class VueAnniversaire extends AppCompatActivity {
                 this,
                 listeAnniversaire,
                 android.R.layout.two_line_list_item,
-                new String[] {"nom", "date"},
+                new String[] {"prenomEtNom", "dateDeNaissance"},
                 new int[] {android.R.id.text1, android.R.id.text2});
 
         vueListeAnniversaire.setAdapter(adapter);
@@ -41,8 +42,18 @@ public class VueAnniversaire extends AppCompatActivity {
         HashMap<String, String> anniversaire;
 
         anniversaire = new HashMap<String, String>();
-        anniversaire.put("nom", "Thomas Saudemont");
-        anniversaire.put("date", "22-02-2001");
+        anniversaire.put("prenomEtNom", "Elon Musk");
+        anniversaire.put("dateDeNaissance", "1971-06-28");
+        listeAnniversaire.add(anniversaire);
+
+        anniversaire = new HashMap<String, String>();
+        anniversaire.put("prenomEtNom", "Leonardo DiCaprio");
+        anniversaire.put("dateDeNaissance", "1974-11-11");
+        listeAnniversaire.add(anniversaire);
+
+        anniversaire = new HashMap<String, String>();
+        anniversaire.put("prenomEtNom", "Anthony Hopkins");
+        anniversaire.put("dateDeNaissance", "1937-12-31");
         listeAnniversaire.add(anniversaire);
 
         return listeAnniversaire;
