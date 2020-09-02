@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -20,6 +21,7 @@ public class VueAnniversaire extends AppCompatActivity {
     protected ListView vueListeAnniversaire;
     protected List<HashMap<String, String>> listeAnniversaire;
     protected Intent intentionNaviguerAjouterAnniversaire;
+    protected Intent intentionNaviguerModifierAnniversaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,26 @@ public class VueAnniversaire extends AppCompatActivity {
                 new View.OnClickListener() {
                     public void onClick(View arg0) {
                         startActivity(intentionNaviguerAjouterAnniversaire);
+                    }
+                }
+        );
+
+        intentionNaviguerModifierAnniversaire = new Intent(this, VueModifierAnniversaire.class);
+
+        vueListeAnniversaire.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+
+                    public void onItemClick(AdapterView<?> parent, View vue,
+                                            int positionDansAdapter, long positionItem) {
+
+                        ListView vueListeLivres = (ListView)vue.getParent();
+
+                        @SuppressWarnings("unchecked")
+                        HashMap<String,String> livre =
+                                (HashMap<String,String>)
+                                        vueListeLivres.getItemAtPosition((int)positionItem);
+
+                        startActivity(intentionNaviguerModifierAnniversaire);
                     }
                 }
         );
