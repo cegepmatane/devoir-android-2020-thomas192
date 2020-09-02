@@ -8,11 +8,24 @@
 
     <ListView
         android:id="@+id/VueListeAnniversaire"
-        android:layout_width="379dp"
-        android:layout_height="564dp"
+        android:layout_width="383dp"
+        android:layout_height="503dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.543" />
+
+    <Button
+        android:id="@+id/vueActionAjouterAnniversaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter anniversaire"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VueListeAnniversaire"
+        app:layout_constraintVertical_bias="0.285" />
 </androidx.constraintlayout.widget.ConstraintLayout>

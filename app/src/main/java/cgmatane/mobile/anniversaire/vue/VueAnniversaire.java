@@ -3,11 +3,12 @@ package cgmatane.mobile.anniversaire.vue;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class VueAnniversaire extends AppCompatActivity {
         setContentView(R.layout.vue_anniversaire);
         vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
 
-        listeAnniversaire = prepareListeAnniversaire();
+        listeAnniversaire = preparerListeAnniversaire();
 
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
@@ -34,9 +35,19 @@ public class VueAnniversaire extends AppCompatActivity {
                 new int[] {android.R.id.text1, android.R.id.text2});
 
         vueListeAnniversaire.setAdapter(adapter);
+
+        Button vueActionAjouterAnniversaire = (Button)findViewById(R.id.vueActionAjouterAnniversaire);
+
+        vueActionAjouterAnniversaire.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View arg0) {
+
+                    }
+                }
+        );
     }
 
-    private List<HashMap<String, String>> prepareListeAnniversaire() {
+    private List<HashMap<String, String>> preparerListeAnniversaire() {
         List<HashMap<String, String>> listeAnniversaire = new ArrayList<HashMap<String, String>>();
 
         HashMap<String, String> anniversaire;
