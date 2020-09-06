@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/vueAjouterAnniversaireChampDateDeNaissance"
+        android:id="@+id/vueModifierAnniversaireChampDateDeNaissance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -62,10 +62,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vueAjouterAnniversaireChampNomEtPrenom" />
+        app:layout_constraintTop_toBottomOf="@+id/vueModifierAnniversaireChampPrenomEtNom" />
 
     <EditText
-        android:id="@+id/vueAjouterAnniversaireChampNomEtPrenom"
+        android:id="@+id/vueModifierAnniversaireChampPrenomEtNom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
