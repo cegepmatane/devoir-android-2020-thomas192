@@ -13,7 +13,7 @@ public class AnniversaireDAO {
         preparerListeAnniversaire();
     }
 
-    private List<HashMap<String, String>> preparerListeAnniversaire() {
+    private void preparerListeAnniversaire() {
 
         HashMap<String, String> a;
 
@@ -31,8 +31,6 @@ public class AnniversaireDAO {
         a.put("prenomEtNom", "Anthony Hopkins");
         a.put("dateDeNaissance", "1937-12-31");
         listeAnniversaire.add(a);
-
-        return listeAnniversaire;
     }
 
     public static AnniversaireDAO getInstance() {
@@ -46,4 +44,7 @@ public class AnniversaireDAO {
         return listeAnniversaire;
     }
 
+    public void ajouterAnniversaire(HashMap<String, String> a) {
+        listeAnniversaire.add(a);
+    }
 }
