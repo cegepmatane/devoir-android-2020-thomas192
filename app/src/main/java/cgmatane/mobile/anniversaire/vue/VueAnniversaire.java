@@ -30,20 +30,11 @@ public class VueAnniversaire extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_anniversaire);
-
-        anniversaireDAO = AnniversaireDAO.getInstance();
-        listeAnniversaire = anniversaireDAO.listerAnniversaire();
-
         vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
 
-        SimpleAdapter adapter = new SimpleAdapter(
-                this,
-                listeAnniversaire,
-                android.R.layout.two_line_list_item,
-                new String[] {"prenomEtNom", "dateDeNaissance"},
-                new int[] {android.R.id.text1, android.R.id.text2});
+        anniversaireDAO = AnniversaireDAO.getInstance();
 
-        vueListeAnniversaire.setAdapter(adapter);
+        afficherListeAnniversaire();
 
         Button vueActionAjouterAnniversaire = (Button)findViewById(R.id.vueActionAjouterAnniversaire);
 
@@ -78,4 +69,16 @@ public class VueAnniversaire extends AppCompatActivity {
         );
     }
 
+    public void afficherListeAnniversaire() {
+        listeAnniversaire = anniversaireDAO.listerAnniversaire();
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                listeAnniversaire,
+                android.R.layout.two_line_list_item,
+                new String[] {"prenomEtNom", "dateDeNaissance"},
+                new int[] {android.R.id.text1, android.R.id.text2});
+        
+        vueListeAnniversaire.setAdapter(adapter);
+    }
 }
