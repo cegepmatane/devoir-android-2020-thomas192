@@ -1,6 +1,9 @@
 package cgmatane.mobile.anniversaire.donnee;
 
+import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,7 +64,26 @@ public class AnniversaireDAO {
         return listeAnniversaire;
     }
 
+    /*
     public void ajouterAnniversaire(HashMap<String, String> a) {
         //listeAnniversaire.add(a);
+    }
+     */
+
+    public void ajouterAnniversaire(Anniversaire anniversaire) {
+        SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
+        baseDeDonneesEcriture.beginTransaction();
+        try {
+            ContentValues anniversaireEnCleValeur = new ContentValues();
+            anniversaireEnCleValeur.put("prenomEtNom", anniversaire.getPrenomEtNom());
+            anniversaireEnCleValeur.put("dateDeNaissance", anniversaire.getDateDeNaissance());
+
+            baseDeDonneesEcriture.insertOrThrow("anniversaire", null, anniversaireEnCleValeur);
+            baseDeDonneesEcriture.setTransactionSuccessful();
+        } catch (Exception e) {
+            Log.d("AnniversaireDAO", "Erreur lors de l'ajout d'un anniversaire dans la base de données");
+        } finally {
+            baseDeDonneesEcriture.endTransaction();
+        }
     }
 }
