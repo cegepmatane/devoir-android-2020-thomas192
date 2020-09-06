@@ -15,11 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import cgmatane.mobile.anniversaire.R;
+import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
 
 public class VueAnniversaire extends AppCompatActivity {
 
     protected ListView vueListeAnniversaire;
     protected List<HashMap<String, String>> listeAnniversaire;
+    protected AnniversaireDAO anniversaireDAO;
+
     protected Intent intentionNaviguerAjouterAnniversaire;
     protected Intent intentionNaviguerModifierAnniversaire;
 
@@ -27,9 +30,11 @@ public class VueAnniversaire extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_anniversaire);
-        vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
 
-        listeAnniversaire = preparerListeAnniversaire();
+        anniversaireDAO = AnniversaireDAO.getInstance();
+        listeAnniversaire = anniversaireDAO.listerAnniversaire();
+
+        vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
 
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
@@ -73,26 +78,4 @@ public class VueAnniversaire extends AppCompatActivity {
         );
     }
 
-    private List<HashMap<String, String>> preparerListeAnniversaire() {
-        List<HashMap<String, String>> listeAnniversaire = new ArrayList<HashMap<String, String>>();
-
-        HashMap<String, String> anniversaire;
-
-        anniversaire = new HashMap<String, String>();
-        anniversaire.put("prenomEtNom", "Elon Musk");
-        anniversaire.put("dateDeNaissance", "1971-06-28");
-        listeAnniversaire.add(anniversaire);
-
-        anniversaire = new HashMap<String, String>();
-        anniversaire.put("prenomEtNom", "Leonardo DiCaprio");
-        anniversaire.put("dateDeNaissance", "1974-11-11");
-        listeAnniversaire.add(anniversaire);
-
-        anniversaire = new HashMap<String, String>();
-        anniversaire.put("prenomEtNom", "Anthony Hopkins");
-        anniversaire.put("dateDeNaissance", "1937-12-31");
-        listeAnniversaire.add(anniversaire);
-
-        return listeAnniversaire;
-    }
 }
