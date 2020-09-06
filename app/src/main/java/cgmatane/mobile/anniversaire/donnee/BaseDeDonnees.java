@@ -8,7 +8,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
 
     private static BaseDeDonnees instance = null;
 
-    private static synchronized BaseDeDonnees getInstance(Context context) {
+    public static synchronized BaseDeDonnees getInstance(Context context) {
         instance = new BaseDeDonnees(context);
         return instance;
     }

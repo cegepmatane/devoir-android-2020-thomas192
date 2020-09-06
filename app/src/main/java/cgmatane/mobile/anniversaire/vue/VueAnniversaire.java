@@ -16,6 +16,7 @@ import java.util.List;
 
 import cgmatane.mobile.anniversaire.R;
 import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
+import cgmatane.mobile.anniversaire.donnee.BaseDeDonnees;
 import cgmatane.mobile.anniversaire.modele.Anniversaire;
 
 public class VueAnniversaire extends AppCompatActivity {
@@ -34,6 +35,9 @@ public class VueAnniversaire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_anniversaire);
         vueListeAnniversaire = (ListView)findViewById(R.id.VueListeAnniversaire);
+
+        // Ce getInstance() doit se faire ici avant AnniversaireDAO.getInstance()
+        BaseDeDonnees.getInstance(getApplicationContext());
 
         anniversaireDAO = AnniversaireDAO.getInstance();
 
