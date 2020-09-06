@@ -86,4 +86,13 @@ public class AnniversaireDAO {
             baseDeDonneesEcriture.endTransaction();
         }
     }
+
+    public Anniversaire chercherAnniversaireParId(int id) {
+        listerAnniversaire();
+        for (Anniversaire a : this.listeAnniversaire) {
+            if (a.getId() == id)
+                return a;
+        }
+        return null;
+    }
 }
