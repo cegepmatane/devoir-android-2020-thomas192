@@ -26,6 +26,8 @@ public class VueAnniversaire extends AppCompatActivity {
     protected Intent intentionNaviguerAjouterAnniversaire;
     protected Intent intentionNaviguerModifierAnniversaire;
 
+    static final public int ACTIVITE_AJOUTER_ANNIVERSAIRE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +45,7 @@ public class VueAnniversaire extends AppCompatActivity {
         vueActionAjouterAnniversaire.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View arg0) {
-                        startActivity(intentionNaviguerAjouterAnniversaire);
+                        startActivityForResult(intentionNaviguerAjouterAnniversaire, ACTIVITE_AJOUTER_ANNIVERSAIRE);
                     }
                 }
         );
@@ -69,6 +71,15 @@ public class VueAnniversaire extends AppCompatActivity {
         );
     }
 
+    public void onActivityResult(int activite, int resultat, Intent donnees) {
+        super.onActivityResult(activite, resultat, donnees);
+        switch (activite) {
+            case ACTIVITE_AJOUTER_ANNIVERSAIRE:
+                afficherListeAnniversaire();
+                break;
+        }
+    }
+
     public void afficherListeAnniversaire() {
         listeAnniversaire = anniversaireDAO.listerAnniversaire();
 
@@ -78,7 +89,7 @@ public class VueAnniversaire extends AppCompatActivity {
                 android.R.layout.two_line_list_item,
                 new String[] {"prenomEtNom", "dateDeNaissance"},
                 new int[] {android.R.id.text1, android.R.id.text2});
-        
+
         vueListeAnniversaire.setAdapter(adapter);
     }
 }
