@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 import cgmatane.mobile.anniversaire.R;
 import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
+import cgmatane.mobile.anniversaire.modele.Anniversaire;
 
 public class VueAjouterAnniversaire extends AppCompatActivity {
 
@@ -51,6 +52,7 @@ public class VueAjouterAnniversaire extends AppCompatActivity {
     }
 
     public void enregistrerAnniversaire() {
+        /*
         HashMap<String, String> a;
 
         a = new HashMap<String, String>();
@@ -58,6 +60,13 @@ public class VueAjouterAnniversaire extends AppCompatActivity {
         a.put("dateDeNaissance", vueAjouterAnniversaireChampDateDeNaissance.getText().toString());
 
         anniversaireDAO = anniversaireDAO.getInstance();
+        anniversaireDAO.ajouterAnniversaire(a);
+         */
+
+        Anniversaire a = new Anniversaire(vueAjouterAnniversaireChampPrenomEtNom.getText().toString(),
+                vueAjouterAnniversaireChampDateDeNaissance.getText().toString(), 0);
+
+        anniversaireDAO = new AnniversaireDAO().getInstance();
         anniversaireDAO.ajouterAnniversaire(a);
     }
 

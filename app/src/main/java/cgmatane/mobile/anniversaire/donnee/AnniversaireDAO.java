@@ -16,7 +16,7 @@ public class AnniversaireDAO {
     private List<Anniversaire> listeAnniversaire;
     private BaseDeDonnees baseDeDonnees;
 
-    private AnniversaireDAO() {
+    public AnniversaireDAO() {
         this.baseDeDonnees =BaseDeDonnees.getInstance();
         listeAnniversaire = new ArrayList<Anniversaire>();
         //preparerListeAnniversaire();
