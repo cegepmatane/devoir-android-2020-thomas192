@@ -1,5 +1,7 @@
 package cgmatane.mobile.anniversaire.donnee;
 
+import android.database.Cursor;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,16 +11,20 @@ import cgmatane.mobile.anniversaire.modele.Anniversaire;
 public class AnniversaireDAO {
     private static AnniversaireDAO instance = null;
     private List<Anniversaire> listeAnniversaire;
+    private BaseDeDonnees baseDeDonnees;
 
     private AnniversaireDAO() {
+        this.baseDeDonnees =BaseDeDonnees.getInstance();
         listeAnniversaire = new ArrayList<Anniversaire>();
-        preparerListeAnniversaire();
+        //preparerListeAnniversaire();
     }
 
     private void preparerListeAnniversaire() {
+        /*
         listeAnniversaire.add(new Anniversaire("Elon Musk", "1971-06-28", 0));
         listeAnniversaire.add(new Anniversaire("Leonardo DiCaprio", "1974-11-11", 1));
         listeAnniversaire.add(new Anniversaire("Anthony Hopkins", "1937-12-31", 2));
+         */
     }
 
     public static AnniversaireDAO getInstance() {
@@ -28,7 +34,30 @@ public class AnniversaireDAO {
         return instance;
     }
 
+    /*
     public List<Anniversaire> listerAnniversaire() {
+        return listeAnniversaire;
+    }
+     */
+
+    public List<Anniversaire> listerAnniversaire() {
+        String LISTER_ANNIVERSAIRE = "SELECT * FROM anniversaire";
+        Cursor curseur = baseDeDonnees.getReadableDatabase().rawQuery(LISTER_ANNIVERSAIRE, null);
+        this.listeAnniversaire.clear();
+        Anniversaire a;
+
+        int indexId = curseur.getColumnIndex("id");
+        int indexPrenomEtNom = curseur.getColumnIndex("prenomEtNom");
+        int indexDateDeNaissance = curseur.getColumnIndex("dateDeNaissance");
+
+        for (curseur.moveToFirst();curseur.isAfterLast();curseur.moveToNext()) {
+            int id = curseur.getInt((indexId));
+            String prenomEtNom = curseur.getString(indexPrenomEtNom);
+            String dateDeNaissance = curseur.getString(indexDateDeNaissance);
+            a = new Anniversaire(prenomEtNom, dateDeNaissance, id);
+            this.listeAnniversaire.add(a);
+        }
+
         return listeAnniversaire;
     }
 
