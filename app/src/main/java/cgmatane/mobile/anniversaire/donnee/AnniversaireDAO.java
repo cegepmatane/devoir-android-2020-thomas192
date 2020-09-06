@@ -4,33 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import cgmatane.mobile.anniversaire.modele.Anniversaire;
+
 public class AnniversaireDAO {
     private static AnniversaireDAO instance = null;
-    private List<HashMap<String, String>> listeAnniversaire;
+    private List<Anniversaire> listeAnniversaire;
 
     private AnniversaireDAO() {
-        listeAnniversaire = new ArrayList<HashMap<String, String>>();
+        listeAnniversaire = new ArrayList<Anniversaire>();
         preparerListeAnniversaire();
     }
 
     private void preparerListeAnniversaire() {
-
-        HashMap<String, String> a;
-
-        a = new HashMap<String, String>();
-        a.put("prenomEtNom", "Elon Musk");
-        a.put("dateDeNaissance", "1971-06-28");
-        listeAnniversaire.add(a);
-
-        a = new HashMap<String, String>();
-        a.put("prenomEtNom", "Leonardo DiCaprio");
-        a.put("dateDeNaissance", "1974-11-11");
-        listeAnniversaire.add(a);
-
-        a = new HashMap<String, String>();
-        a.put("prenomEtNom", "Anthony Hopkins");
-        a.put("dateDeNaissance", "1937-12-31");
-        listeAnniversaire.add(a);
+        listeAnniversaire.add(new Anniversaire("Elon Musk", "1971-06-28", 0));
+        listeAnniversaire.add(new Anniversaire("Leonardo DiCaprio", "1974-11-11", 1));
+        listeAnniversaire.add(new Anniversaire("Anthony Hopkins", "1937-12-31", 2));
     }
 
     public static AnniversaireDAO getInstance() {
@@ -40,11 +28,11 @@ public class AnniversaireDAO {
         return instance;
     }
 
-    public List<HashMap<String, String>> listerAnniversaire() {
+    public List<Anniversaire> listerAnniversaire() {
         return listeAnniversaire;
     }
 
     public void ajouterAnniversaire(HashMap<String, String> a) {
-        listeAnniversaire.add(a);
+        //listeAnniversaire.add(a);
     }
 }

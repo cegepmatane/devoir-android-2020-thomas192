@@ -16,11 +16,12 @@ import java.util.List;
 
 import cgmatane.mobile.anniversaire.R;
 import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
+import cgmatane.mobile.anniversaire.modele.Anniversaire;
 
 public class VueAnniversaire extends AppCompatActivity {
 
     protected ListView vueListeAnniversaire;
-    protected List<HashMap<String, String>> listeAnniversaire;
+    protected List<Anniversaire> listeAnniversaire;
     protected AnniversaireDAO anniversaireDAO;
 
     protected Intent intentionNaviguerAjouterAnniversaire;
@@ -83,9 +84,16 @@ public class VueAnniversaire extends AppCompatActivity {
     public void afficherListeAnniversaire() {
         listeAnniversaire = anniversaireDAO.listerAnniversaire();
 
+        List<HashMap<String, String>>listeAnniversairePourAfficher =
+                new ArrayList<HashMap<String, String>>();
+
+        for (Anniversaire a : listeAnniversaire) {
+            listeAnniversairePourAfficher.add(a.obtenirAnniversairePourAfficher());
+        }
+
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
-                listeAnniversaire,
+                listeAnniversairePourAfficher,
                 android.R.layout.two_line_list_item,
                 new String[] {"prenomEtNom", "dateDeNaissance"},
                 new int[] {android.R.id.text1, android.R.id.text2});
