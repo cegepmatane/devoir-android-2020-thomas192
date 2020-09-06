@@ -53,7 +53,7 @@ public class AnniversaireDAO {
         int indexPrenomEtNom = curseur.getColumnIndex("prenomEtNom");
         int indexDateDeNaissance = curseur.getColumnIndex("dateDeNaissance");
 
-        for (curseur.moveToFirst();curseur.isAfterLast();curseur.moveToNext()) {
+        for (curseur.moveToFirst();!curseur.isAfterLast();curseur.moveToNext()) {
             int id = curseur.getInt((indexId));
             String prenomEtNom = curseur.getString(indexPrenomEtNom);
             String dateDeNaissance = curseur.getString(indexDateDeNaissance);

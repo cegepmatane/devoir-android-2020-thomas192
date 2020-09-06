@@ -60,6 +60,7 @@ public class VueAnniversaire extends AppCompatActivity {
         vueListeAnniversaire.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
 
+                    @Override
                     public void onItemClick(AdapterView<?> parent, View vue,
                                             int positionDansAdapter, long positionItem) {
 
@@ -95,13 +96,13 @@ public class VueAnniversaire extends AppCompatActivity {
             listeAnniversairePourAfficher.add(a.obtenirAnniversairePourAfficher());
         }
 
-        SimpleAdapter adapter = new SimpleAdapter(
+        SimpleAdapter adapteur = new SimpleAdapter(
                 this,
                 listeAnniversairePourAfficher,
                 android.R.layout.two_line_list_item,
                 new String[] {"prenomEtNom", "dateDeNaissance"},
                 new int[] {android.R.id.text1, android.R.id.text2});
 
-        vueListeAnniversaire.setAdapter(adapter);
+        vueListeAnniversaire.setAdapter(adapteur);
     }
 }
