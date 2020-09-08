@@ -87,7 +87,24 @@ public class AnniversaireDAO {
         }
     }
 
-    public Anniversaire chercherAnniversaireParId(int id) {
+    public void modifierAnniversaire(Anniversaire anniversaire) {
+        SQLiteDatabase baseDeDonneesEcriture = baseDeDonnees.getWritableDatabase();
+        baseDeDonneesEcriture.beginTransaction();
+        try {
+            ContentValues livreEnCleValeur = new ContentValues();
+            livreEnCleValeur.put("prenomEtNom", anniversaire.getPrenomEtNom());
+            livreEnCleValeur.put("dateDeNaissance", anniversaire.getDateDeNaissance());
+
+            baseDeDonneesEcriture.update("anniversaire", livreEnCleValeur,
+                    "id = ?", new String[]{String.valueOf(anniversaire.getId())});
+        } catch (Exception e) {
+            Log.d("AnniversaireDAO", "Erreur lors de la modification d'un anniversaire dans la base de données");
+        } finally {
+            baseDeDonneesEcriture.endTransaction();
+        }
+        }
+
+        public Anniversaire chercherAnniversaireParId(int id) {
         listerAnniversaire();
         for (Anniversaire a : this.listeAnniversaire) {
             if (a.getId() == id)
