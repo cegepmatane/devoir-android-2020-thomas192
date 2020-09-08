@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.HashMap;
-
 import cgmatane.mobile.anniversaire.R;
 import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
 import cgmatane.mobile.anniversaire.modele.Anniversaire;
@@ -38,7 +36,7 @@ public class VueAjouterAnniversaire extends AppCompatActivity {
         vueAjouterAnniversaireChampPrenomEtNom = (EditText)findViewById(R.id.vueModifierAnniversaireChampPrenomEtNom);
         vueAjouterAnniversaireChampDateDeNaissance = (EditText)findViewById(R.id.vueModifierAnniversaireChampDateDeNaissance);
 
-        Button vueAjouterAnniversaireActionAjouter = (Button)findViewById(R.id.vueAjouterAnniversaireActionAjouter);
+        Button vueAjouterAnniversaireActionAjouter = (Button)findViewById(R.id.vueModifierAnniversaireActionModifier);
 
         vueAjouterAnniversaireActionAjouter.setOnClickListener(
                 new View.OnClickListener() {
