@@ -37,7 +37,7 @@ public class VueModifierAnniversaire extends AppCompatActivity {
         Bundle parametres = this.getIntent().getExtras();
         String idParametre = (String) parametres.get("id");
         int id = Integer.parseInt(idParametre);
-        anniversaireDAO = anniversaireDAO.getInstance();
+        anniversaireDAO = AnniversaireDAO.getInstance();
         anniversaire = anniversaireDAO.chercherAnniversaireParId(id);
 
         vueModifierAnniversaireChampPrenomEtNom = (EditText)findViewById(R.id.vueModifierAnniversaireChampPrenomEtNom);
