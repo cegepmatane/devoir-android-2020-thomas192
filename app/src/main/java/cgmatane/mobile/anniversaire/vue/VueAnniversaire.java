@@ -29,6 +29,7 @@ public class VueAnniversaire extends AppCompatActivity {
     protected Intent intentionNaviguerModifierAnniversaire;
 
     static final public int ACTIVITE_AJOUTER_ANNIVERSAIRE = 1;
+    static final public int ACTIVITE_MODIFIER_ANNIVERSAIRE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,9 @@ public class VueAnniversaire extends AppCompatActivity {
                                 (HashMap<String,String>)
                                         vueListeAnniversaire.getItemAtPosition((int)positionItem);
 
-                        startActivity(intentionNaviguerModifierAnniversaire);
+                        //startActivity(intentionNaviguerModifierAnniversaire);
+                        intentionNaviguerModifierAnniversaire.putExtra("id", anniversaire.get("id"));
+                        startActivityForResult(intentionNaviguerModifierAnniversaire, ACTIVITE_MODIFIER_ANNIVERSAIRE);
                     }
                 }
         );
