@@ -1,6 +1,14 @@
 package cgmatane.mobile.anniversaire.modele;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
+
+import javax.xml.datatype.Duration;
 
 public class Anniversaire {
     protected String prenomEtNom;
@@ -13,10 +21,23 @@ public class Anniversaire {
         this.id = id;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public HashMap<String, String> obtenirAnniversairePourAfficher() {
+        // Gestion de l'âge à la date de l'anniversaire
+        // et décompte des jours avant le prochain anniversaire
+        LocalDate dateDeNaissance = LocalDate.parse(this.dateDeNaissance);
+        LocalDate dateActuelle = LocalDate.now();
+        LocalDate dateAnniversaire = dateDeNaissance.withYear(dateActuelle.getYear());
+        if (ChronoUnit.DAYS.between(dateActuelle, dateAnniversaire) < 0) {
+            dateAnniversaire = dateDeNaissance.withYear(dateActuelle.getYear() + 1);
+        }
+        long joursRestants = ChronoUnit.DAYS.between(dateActuelle, dateAnniversaire);
+        long age = ChronoUnit.YEARS.between(dateDeNaissance, dateActuelle);
+        age++;
+
         HashMap<String, String> anniversairePourAfficher = new HashMap<String, String>();
-        anniversairePourAfficher.put("prenomEtNom", this.prenomEtNom);
-        anniversairePourAfficher.put("dateDeNaissance", this.dateDeNaissance);
+        anniversairePourAfficher.put("info", this.prenomEtNom + " (" + this.dateDeNaissance + ")");
+        anniversairePourAfficher.put("decompte",  age + " ans dans " + joursRestants + " jours");
         anniversairePourAfficher.put("id", "" + this.id);
         return anniversairePourAfficher;
     }
