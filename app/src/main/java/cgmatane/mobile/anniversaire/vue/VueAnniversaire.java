@@ -106,7 +106,7 @@ public class VueAnniversaire extends AppCompatActivity {
                 this,
                 listeAnniversairePourAfficher,
                 android.R.layout.two_line_list_item,
-                new String[] {"prenomEtNom", "dateDeNaissance"},
+                new String[] {"info", "decompte"},
                 new int[] {android.R.id.text1, android.R.id.text2});
 
         vueListeAnniversaire.setAdapter(adapteur);
