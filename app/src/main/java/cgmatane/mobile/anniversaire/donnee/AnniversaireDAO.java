@@ -97,12 +97,13 @@ public class AnniversaireDAO {
 
             baseDeDonneesEcriture.update("anniversaire", livreEnCleValeur,
                     "id = ?", new String[]{String.valueOf(anniversaire.getId())});
+            baseDeDonneesEcriture.setTransactionSuccessful();
         } catch (Exception e) {
             Log.d("AnniversaireDAO", "Erreur lors de la modification d'un anniversaire dans la base de données");
         } finally {
             baseDeDonneesEcriture.endTransaction();
         }
-        }
+    }
 
         public Anniversaire chercherAnniversaireParId(int id) {
         listerAnniversaire();
