@@ -86,6 +86,9 @@ public class VueAnniversaire extends AppCompatActivity {
             case ACTIVITE_AJOUTER_ANNIVERSAIRE:
                 afficherListeAnniversaire();
                 break;
+            case ACTIVITE_MODIFIER_ANNIVERSAIRE:
+                afficherListeAnniversaire();
+                break;
         }
     }
 
