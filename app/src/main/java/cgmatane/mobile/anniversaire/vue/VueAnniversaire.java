@@ -1,8 +1,10 @@
 package cgmatane.mobile.anniversaire.vue;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +33,7 @@ public class VueAnniversaire extends AppCompatActivity {
     static final public int ACTIVITE_AJOUTER_ANNIVERSAIRE = 1;
     static final public int ACTIVITE_MODIFIER_ANNIVERSAIRE = 2;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +83,7 @@ public class VueAnniversaire extends AppCompatActivity {
         );
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onActivityResult(int activite, int resultat, Intent donnees) {
         super.onActivityResult(activite, resultat, donnees);
         switch (activite) {
@@ -92,6 +96,7 @@ public class VueAnniversaire extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void afficherListeAnniversaire() {
         listeAnniversaire = anniversaireDAO.listerAnniversaire();
 
