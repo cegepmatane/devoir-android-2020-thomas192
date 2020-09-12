@@ -8,17 +8,29 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 
-import javax.xml.datatype.Duration;
-
-public class Anniversaire {
+public class Anniversaire implements Comparable<Anniversaire> {
     protected String prenomEtNom;
     protected String dateDeNaissance;
     protected int id;
 
-    public Anniversaire(String prenomEtNom, String dateDeNaissance, int id) {
-        this.prenomEtNom = prenomEtNom;
-        this.dateDeNaissance = dateDeNaissance;
-        this.id = id;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public int compareTo(Anniversaire a) {
+        // On trie les anniversaires selon le nombre de jours restants avant la date de
+        // l'anniversaire dans l'ordre croissant
+        LocalDate dateDeNaissance1 = LocalDate.parse(this.getDateDeNaissance());
+        LocalDate dateDeNaissance2 = LocalDate.parse(a.getDateDeNaissance());
+        LocalDate dateActuelle = LocalDate.now();
+        LocalDate dateAnniversaire1 = dateDeNaissance1.withYear(dateActuelle.getYear());
+        LocalDate dateAnniversaire2 = dateDeNaissance2.withYear(dateActuelle.getYear());
+        if (ChronoUnit.DAYS.between(dateActuelle, dateAnniversaire1) < 0) {
+            dateAnniversaire1 = dateDeNaissance1.withYear(dateActuelle.getYear() + 1);
+        }
+        if (ChronoUnit.DAYS.between(dateActuelle, dateAnniversaire2) < 0) {
+            dateAnniversaire2 = dateDeNaissance2.withYear(dateActuelle.getYear() + 1);
+        }
+
+        return (int)ChronoUnit.DAYS.between(dateAnniversaire2, dateAnniversaire1);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -40,6 +52,12 @@ public class Anniversaire {
         anniversairePourAfficher.put("decompte",  age + " ans dans " + joursRestants + " jours");
         anniversairePourAfficher.put("id", "" + this.id);
         return anniversairePourAfficher;
+    }
+
+    public Anniversaire(String prenomEtNom, String dateDeNaissance, int id) {
+        this.prenomEtNom = prenomEtNom;
+        this.dateDeNaissance = dateDeNaissance;
+        this.id = id;
     }
 
     public int getId() {

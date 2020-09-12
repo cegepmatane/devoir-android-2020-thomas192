@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -99,6 +100,7 @@ public class VueAnniversaire extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void afficherListeAnniversaire() {
         listeAnniversaire = anniversaireDAO.listerAnniversaire();
+        Collections.sort(listeAnniversaire);
 
         List<HashMap<String, String>>listeAnniversairePourAfficher =
                 new ArrayList<HashMap<String, String>>();
