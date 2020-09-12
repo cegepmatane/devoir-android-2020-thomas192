@@ -34,7 +34,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
     @Override
     public void onOpen(SQLiteDatabase db) {
         // Créer l'échafaud lors de la première exécution, commenter cette méthode pour les prochaines exécutions
-
+        /*
         String DELETE = "delete from anniversaire where 1 = 1";
         db.execSQL(DELETE);
 
@@ -45,6 +45,7 @@ public class BaseDeDonnees extends SQLiteOpenHelper {
         db.execSQL(INSERT_1);
         db.execSQL(INSERT_2);
         db.execSQL(INSERT_3);
+         */
     }
 
     @Override
