@@ -61,11 +61,11 @@ public class VueAjouterAnniversaire extends AppCompatActivity {
         anniversaireDAO.ajouterAnniversaire(a);
          */
 
-        Anniversaire a = new Anniversaire(vueAjouterAnniversaireChampPrenomEtNom.getText().toString(),
+        Anniversaire anniversaire = new Anniversaire(vueAjouterAnniversaireChampPrenomEtNom.getText().toString(),
                 vueAjouterAnniversaireChampDateDeNaissance.getText().toString(), 0);
 
         anniversaireDAO = new AnniversaireDAO().getInstance();
-        anniversaireDAO.ajouterAnniversaire(a);
+        anniversaireDAO.ajouterAnniversaire(anniversaire);
     }
 
     public void naviguerRetourVueAnniversaire() {

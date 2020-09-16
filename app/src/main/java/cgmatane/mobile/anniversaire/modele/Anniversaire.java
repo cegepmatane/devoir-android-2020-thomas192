@@ -15,11 +15,11 @@ public class Anniversaire implements Comparable<Anniversaire> {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public int compareTo(Anniversaire a) {
+    public int compareTo(Anniversaire anniversaire) {
         // On trie les anniversaires selon le nombre de jours restants avant la date de
         // l'anniversaire dans l'ordre croissant
         LocalDate dateDeNaissance1 = LocalDate.parse(this.getDateDeNaissance());
-        LocalDate dateDeNaissance2 = LocalDate.parse(a.getDateDeNaissance());
+        LocalDate dateDeNaissance2 = LocalDate.parse(anniversaire.getDateDeNaissance());
         LocalDate dateActuelle = LocalDate.now();
         LocalDate dateAnniversaire1 = dateDeNaissance1.withYear(dateActuelle.getYear());
         LocalDate dateAnniversaire2 = dateDeNaissance2.withYear(dateActuelle.getYear());
@@ -48,7 +48,7 @@ public class Anniversaire implements Comparable<Anniversaire> {
         age++;
 
         HashMap<String, String> anniversairePourAfficher = new HashMap<String, String>();
-        anniversairePourAfficher.put("info", this.prenomEtNom + " (" + this.dateDeNaissance + ")");
+        anniversairePourAfficher.put("information", this.prenomEtNom + " (" + this.dateDeNaissance + ")");
         anniversairePourAfficher.put("decompte",  age + " ans dans " + joursRestants + " jours");
         anniversairePourAfficher.put("id", "" + this.id);
         return anniversairePourAfficher;

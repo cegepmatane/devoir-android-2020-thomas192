@@ -114,15 +114,15 @@ public class VueAnniversaire extends AppCompatActivity {
         List<HashMap<String, String>>listeAnniversairePourAfficher =
                 new ArrayList<HashMap<String, String>>();
 
-        for (Anniversaire a : listeAnniversaire) {
-            listeAnniversairePourAfficher.add(a.obtenirAnniversairePourAfficher());
+        for (Anniversaire anniversaire : listeAnniversaire) {
+            listeAnniversairePourAfficher.add(anniversaire.obtenirAnniversairePourAfficher());
         }
 
         SimpleAdapter adapteur = new SimpleAdapter(
                 this,
                 listeAnniversairePourAfficher,
                 android.R.layout.two_line_list_item,
-                new String[] {"info", "decompte"},
+                new String[] {"information", "decompte"},
                 new int[] {android.R.id.text1, android.R.id.text2});
 
         vueListeAnniversaire.setAdapter(adapteur);
@@ -131,21 +131,21 @@ public class VueAnniversaire extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void creationAlarmeAnniversaire() {
         // On déclenche une alarme qui lance une activité si un anniversaire a lieu aujourd'hui
-        for (Anniversaire a : listeAnniversaire) {
+        for (Anniversaire anniversaire : listeAnniversaire) {
 
             LocalDate dateActuelle = LocalDate.now();
-            LocalDate dateDeNaissance = LocalDate.parse(a.getDateDeNaissance());
+            LocalDate dateDeNaissance = LocalDate.parse(anniversaire.getDateDeNaissance());
             LocalDate dateAnniversaire = dateDeNaissance.withYear(dateActuelle.getYear());
 
             if (dateAnniversaire.isEqual(dateActuelle)) {
                 Intent intentionNaviguerAlarmeAnniversaire = new Intent(this, VueAlarmeAnniversaire.class);
-                intentionNaviguerAlarmeAnniversaire.putExtra("id", a.getId());
+                intentionNaviguerAlarmeAnniversaire.putExtra("id", anniversaire.getId());
 
                 PendingIntent intentionEnAttente = PendingIntent.getActivity(this, ACTIVITE_ALARME_ANNIVERSAIRE,
                         intentionNaviguerAlarmeAnniversaire, 0);
 
-                AlarmManager manager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                manager.set(RTC, System.currentTimeMillis(), intentionEnAttente);
+                AlarmManager alarmeManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+                alarmeManager.set(RTC, System.currentTimeMillis(), intentionEnAttente);
             }
         }
     }
