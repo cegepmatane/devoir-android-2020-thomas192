@@ -38,20 +38,7 @@
         android:layout_marginRight="92dp"
         android:text="minutes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toEndOf="@+id/vueAlarmeAnniversaireChampMinutes"
         app:layout_constraintTop_toBottomOf="@+id/vueAlarmeAnniversaireTitre" />
-
-    <EditText
-        android:id="@+id/vueAlarmeAnniversaireChampMinutes"
-        android:layout_width="58dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/vueAlarmeAnniversaireCheckBoxRappel"
-        tools:layout_editor_absoluteY="414dp" />
 
     <CheckBox
         android:id="@+id/vueAlarmeAnniversaireCheckBoxRappel"
@@ -62,6 +49,22 @@
         android:layout_marginTop="68dp"
         android:text="Rappel dans :"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vueAlarmeAnniversaireTitre" />
+
+    <EditText
+        android:id="@+id/vueAlarmeAnniversaireChampMinutes"
+        android:layout_width="62dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/vueAlarmeAnniversaireCheckBoxRappel"
         app:layout_constraintTop_toBottomOf="@+id/vueAlarmeAnniversaireTitre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
