@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vue.VueAlarmeAnniversaire">
+
+    <TextView
+        android:id="@+id/vueAlarmeAnniversaireTitre"
+        android:layout_width="298dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="244dp"
+        android:gravity="center"
+        android:text="C'est l'anniversaire de **** aujourd'hui !"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/vueAlarmeAnniversaireActionConfirmer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Confirmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginRight="92dp"
+        android:text="minutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintStart_toEndOf="@+id/vueAlarmeAnniversaireChampMinutes"
+        app:layout_constraintTop_toBottomOf="@+id/vueAlarmeAnniversaireTitre" />
+
+    <EditText
+        android:id="@+id/vueAlarmeAnniversaireChampMinutes"
+        android:layout_width="58dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/vueAlarmeAnniversaireCheckBoxRappel"
+        tools:layout_editor_absoluteY="414dp" />
+
+    <CheckBox
+        android:id="@+id/vueAlarmeAnniversaireCheckBoxRappel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="68dp"
+        android:text="Rappel dans :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vueAlarmeAnniversaireTitre" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
