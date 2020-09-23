@@ -106,8 +106,8 @@ public class AnniversaireDAO {
     }
 
         public Anniversaire chercherAnniversaireParId(int id) {
-        listerAnniversaire();
-        for (Anniversaire anniversaire : this.listeAnniversaire) {
+        listeAnniversaire = listerAnniversaire();
+        for (Anniversaire anniversaire : listeAnniversaire) {
             if (anniversaire.getId() == id)
                 return anniversaire;
         }
