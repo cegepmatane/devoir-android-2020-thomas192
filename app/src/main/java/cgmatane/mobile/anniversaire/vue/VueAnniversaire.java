@@ -20,14 +20,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import cgmatane.mobile.anniversaire.R;
 import cgmatane.mobile.anniversaire.donnee.AnniversaireDAO;
 import cgmatane.mobile.anniversaire.donnee.BaseDeDonnees;
 import cgmatane.mobile.anniversaire.modele.Anniversaire;
 
+import static android.app.AlarmManager.INTERVAL_FIFTEEN_MINUTES;
 import static android.app.AlarmManager.RTC;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class VueAnniversaire extends AppCompatActivity {
 
     protected ListView vueListeAnniversaire;
@@ -40,6 +44,8 @@ public class VueAnniversaire extends AppCompatActivity {
     static final public int ACTIVITE_AJOUTER_ANNIVERSAIRE = 1;
     static final public int ACTIVITE_MODIFIER_ANNIVERSAIRE = 2;
     static final public int ACTIVITE_ALARME_ANNIVERSAIRE = 3;
+
+    protected LocalDate dateActuelle = LocalDate.now();
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -91,6 +97,21 @@ public class VueAnniversaire extends AppCompatActivity {
         );
 
         creationAlarmeAnniversaire();
+
+        // Les alarmes sont mises à jour toutes les 5 minutes
+        Timer miseAJourAlarmes = new Timer();
+        miseAJourAlarmes.scheduleAtFixedRate(new TimerTask() {
+                                  @Override
+                                  public void run() {
+                                      if(!dateActuelle.isEqual(LocalDate.now())) {
+                                          System.out.println("Mise à jour des alarmes");
+                                          dateActuelle = LocalDate.now();
+                                          creationAlarmeAnniversaire();
+                                      }
+                                  }
+                              },
+                0,
+                INTERVAL_FIFTEEN_MINUTES /3);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
